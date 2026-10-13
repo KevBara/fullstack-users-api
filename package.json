@@ -1,0 +1,21 @@
+{
+  "name": "fullstack-users-api",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"cross-env PORT=4001 npm run dev --workspace apps/backend\" \"cross-env PORT=3001 NEXT_PUBLIC_API_URL=http://localhost:4001/api/v1 npm run dev --workspace apps/frontend\"",
+    "build": "npm run build --workspace apps/backend && npm run build --workspace apps/frontend",
+    "test": "npm run test --workspace apps/backend",
+    "lint": "npm run lint --workspace apps/frontend",
+    "typecheck": "npm run build --workspace apps/backend"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "cross-env": "^10.0.0"
+  }
+}
